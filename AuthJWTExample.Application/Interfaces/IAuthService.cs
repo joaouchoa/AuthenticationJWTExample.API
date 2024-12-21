@@ -10,6 +10,6 @@ namespace AuthJWTExample.Application.Interfaces
 {
     public interface IAuthService
     {
-        string GenerateToken(LoginRequest user);
+        Task<string> GenerateToken(LoginRequest user);
     }
 }

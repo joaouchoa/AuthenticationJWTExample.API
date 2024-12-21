@@ -1,4 +1,5 @@
-﻿using AuthJWTExample.Domain.Model;
+﻿using AuthJWTExample.Application.DTOs.Request;
+using AuthJWTExample.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace AuthJWTExample.Application.Interfaces
 {
     public interface IUserService
     {
-        public void Add(User user);
+        public void Add(AddUserRequest user);
         public void GetUserByName(string userName);
     }
 }

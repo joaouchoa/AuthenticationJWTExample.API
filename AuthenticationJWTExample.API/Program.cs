@@ -33,7 +33,7 @@ builder.Services.AddSwaggerGen(options =>
         Scheme = "Bearer",
         BearerFormat = "JWT",
         In = ParameterLocation.Header,
-        Description = "Cabeçalho de Autorização JWT, Bearer \r\n\r\n Digite 'Bearer' antes de colocar o token"
+        Description = "JWT Authorization Header, Bearer \r\n\r\n Type 'Bearer' before inserting the token"
     });
 
     options.AddSecurityRequirement(new OpenApiSecurityRequirement 
@@ -72,12 +72,12 @@ builder.Services.AddAuthentication(x =>
         };
     });
 
-builder.Services.AddScoped<IApplicationBuilder, ApplicationBuilder>();
+//builder.Services.AddScoped<IApplicationBuilder, ApplicationBuilder>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddDbContext<AuthJWTExampleContext>(options =>
-    options.UseSqlite("Data Source=../AuthJWTExample.Infra/AuthExample.db"));
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 
 var app = builder.Build();

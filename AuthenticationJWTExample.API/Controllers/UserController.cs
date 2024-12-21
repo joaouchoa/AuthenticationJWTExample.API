@@ -1,4 +1,5 @@
-﻿using AuthJWTExample.Application.Interfaces;
+﻿using AuthJWTExample.Application.DTOs.Request;
+using AuthJWTExample.Application.Interfaces;
 using AuthJWTExample.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
@@ -21,7 +22,7 @@ namespace AuthJWTExample.API.Controllers
         [HttpPost(template: "add-user", Name = "add-user")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         [ProducesResponseType(statusCode: StatusCodes.Status500InternalServerError)]
-        public ActionResult AddUser(User user) 
+        public ActionResult AddUser(AddUserRequest user) 
         { 
             _userService.Add(user);
             return Ok("User Insertd sucessfully");

@@ -1,4 +1,5 @@
-﻿using AuthJWTExample.Application.Interfaces;
+﻿using AuthJWTExample.Application.DTOs.Request;
+using AuthJWTExample.Application.Interfaces;
 using AuthJWTExample.Domain.Interfaces;
 using AuthJWTExample.Domain.Model;
 using System;
@@ -18,8 +19,15 @@ namespace AuthJWTExample.Application.Service
             _userRepository = repository;
         }
 
-        public void Add(User user)
+        public void Add(AddUserRequest userRequest)
         {
+            var user = new User
+            {
+                UserName = userRequest.UserName,
+                Password = userRequest.Password,
+                Role = userRequest.Role
+            };
+
             _userRepository.AddUserAsync(user);
         }
 

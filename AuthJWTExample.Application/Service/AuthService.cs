@@ -20,9 +20,9 @@ namespace AuthJWTExample.Application.Service
             _configuration = configuration;
             _userRepository = userRepository;
         }
-        public string GenerateToken(LoginRequest user)
+        public async Task<string> GenerateToken(LoginRequest user)
         {
-            var userFromDb = _userRepository.GetUserByNameAsync(user.UserName).Result;
+            var userFromDb = await _userRepository.GetUserByNameAsync(user.UserName);
 
             if(userFromDb == null)
                 return String.Empty;
@@ -45,7 +45,7 @@ namespace AuthJWTExample.Application.Service
                     new Claim(type: ClaimTypes.Name, userFromDb.UserName),
                     new Claim(type: ClaimTypes.Role, userFromDb.Role),
                 },
-                expires: DateTime.Now.AddHours(1),
+                expires: DateTime.UtcNow.AddHours(1),
                 signingCredentials: signinCredential
             );
 
