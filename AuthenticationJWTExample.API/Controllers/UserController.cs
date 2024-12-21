@@ -27,6 +27,5 @@ namespace AuthJWTExample.API.Controllers
             _userService.Add(user);
             return Ok("User Insertd sucessfully");
         }
-
     }
 }

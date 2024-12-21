@@ -12,19 +12,23 @@ namespace AuthJWTExample.Application.Service
 {
     public class UserService : IUserService
     {
+        private readonly IPasswordHasher _passwordHasher;
         private readonly IUserRepository _userRepository;
 
-        public UserService(IUserRepository repository)
+        public UserService(IPasswordHasher passwordHasher, IUserRepository repository)
         {
+            _passwordHasher = passwordHasher;
             _userRepository = repository;
         }
 
         public void Add(AddUserRequest userRequest)
         {
+            var hashedPassword = _passwordHasher.HashPassword(userRequest.Password);
+
             var user = new User
             {
                 UserName = userRequest.UserName,
-                Password = userRequest.Password,
+                Password = hashedPassword,
                 Role = userRequest.Role
             };
 

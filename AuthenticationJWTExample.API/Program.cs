@@ -3,6 +3,7 @@ using AuthJWTExample.Application.Service;
 using AuthJWTExample.Domain.Interfaces;
 using AuthJWTExample.Infra.Context;
 using AuthJWTExample.Infra.Repository;
+using AuthJWTExample.Infra.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -76,6 +77,7 @@ builder.Services.AddAuthentication(x =>
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<IPasswordHasher, PasswordHasherService>();
 builder.Services.AddDbContext<AuthJWTExampleContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 

@@ -14,11 +14,13 @@ namespace AuthJWTExample.Application.Service
     {
         private readonly IConfiguration _configuration;
         private readonly IUserRepository _userRepository;
+        private readonly IPasswordHasher _passwordHasher;
 
-        public AuthService(IConfiguration configuration, IUserRepository userRepository)
+        public AuthService(IConfiguration configuration, IUserRepository userRepository, IPasswordHasher passwordHasher)
         {
             _configuration = configuration;
             _userRepository = userRepository;
+            _passwordHasher = passwordHasher;
         }
         public async Task<string> GenerateToken(LoginRequest user)
         {
@@ -27,7 +29,7 @@ namespace AuthJWTExample.Application.Service
             if(userFromDb == null)
                 return String.Empty;
 
-            if ( user.UserName != userFromDb.UserName || user.Password != userFromDb.Password)
+            if ( user.UserName != userFromDb.UserName || !_passwordHasher.VerifyPassword(userFromDb.Password, user.Password))
                 return String.Empty;
 
             var secretKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
