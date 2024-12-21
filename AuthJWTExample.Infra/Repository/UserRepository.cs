@@ -19,15 +19,18 @@ namespace AuthJWTExample.Infra.Repository
             _context = context;
         }
 
-        public async Task AddUserAsync(User user)
+        public async Task<bool> AddUserAsync(User user)
         {
-            if (user == null)
+            try
             {
-                throw new ArgumentNullException(nameof(user));
+                await _context.Users.AddAsync(user);
+                await _context.SaveChangesAsync();
+                return true;
             }
-
-            await _context.Users.AddAsync(user);
-            await _context.SaveChangesAsync();
+            catch
+            {
+                return false; 
+            }
         }
 
         public async Task<User> GetUserByNameAsync(string username)

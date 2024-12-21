@@ -8,7 +8,7 @@ namespace AuthJWTExample.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : APIController
     {
         private readonly IAuthService _authService;
 

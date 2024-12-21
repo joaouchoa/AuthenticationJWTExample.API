@@ -9,7 +9,7 @@ namespace AuthJWTExample.Domain.Interfaces
 { 
     public interface IUserRepository
     {
-        public Task AddUserAsync(User user);
+        public Task<bool> AddUserAsync(User user);
         public Task<User> GetUserByNameAsync(string userName);
     }
 }

@@ -4,13 +4,14 @@ using AuthJWTExample.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace AuthJWTExample.API.Controllers
 {
     [Authorize(Roles = "Manager")]
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : APIController
     {
         private readonly IUserService _userService;
 
@@ -22,10 +23,14 @@ namespace AuthJWTExample.API.Controllers
         [HttpPost(template: "add-user", Name = "add-user")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         [ProducesResponseType(statusCode: StatusCodes.Status500InternalServerError)]
-        public ActionResult AddUser(AddUserRequest user) 
+        public async Task<ActionResult> AddUser(AddUserRequest user) 
         { 
-            _userService.Add(user);
-            return Ok("User Insertd sucessfully");
+            var result = await _userService.Add(user);
+
+            if(!result.created)
+                return CustomResponse((int)HttpStatusCode.BadRequest, result.created, result.Errors);
+
+            return CustomResponse((int)HttpStatusCode.OK, result.created, result.Errors);
         }
     }
 }

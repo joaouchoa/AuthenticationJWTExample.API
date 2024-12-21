@@ -7,6 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.11.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.11.0" />
     <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.3.0" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
   </ItemGroup>
@@ -14,10 +16,6 @@
   <ItemGroup>
     <ProjectReference Include="..\AuthJWTExample.Domain\AuthJWTExample.Domain.csproj" />
     <ProjectReference Include="..\AuthJWTExample.Infra\AuthJWTExample.Infra.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="DTOs\Response\" />
   </ItemGroup>
 
 </Project>
