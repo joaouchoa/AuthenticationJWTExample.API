@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace AuthJWTExample.Domain.Interfaces
-{
+{ 
     public interface IUserRepository
     {
         public Task AddUserAsync(User user);

@@ -1,4 +1,5 @@
-﻿using AuthJWTExample.Domain.Interfaces;
+﻿using AuthJWTExample.Application.Interfaces;
+using AuthJWTExample.Domain.Interfaces;
 using AuthJWTExample.Domain.Model;
 using System;
 using System.Collections.Generic;

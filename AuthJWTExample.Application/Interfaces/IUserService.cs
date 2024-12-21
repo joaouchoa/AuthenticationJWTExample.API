@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AuthJWTExample.Domain.Interfaces
+namespace AuthJWTExample.Application.Interfaces
 {
     public interface IUserService
     {

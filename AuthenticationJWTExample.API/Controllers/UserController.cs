@@ -1,10 +1,12 @@
-﻿using AuthJWTExample.Domain.Interfaces;
+﻿using AuthJWTExample.Application.Interfaces;
 using AuthJWTExample.Domain.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthJWTExample.API.Controllers
 {
+    [Authorize(Roles = "Manager")]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase

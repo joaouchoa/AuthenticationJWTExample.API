@@ -7,8 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="8.3.0" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\AuthJWTExample.Domain\AuthJWTExample.Domain.csproj" />
     <ProjectReference Include="..\AuthJWTExample.Infra\AuthJWTExample.Infra.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DTOs\Response\" />
   </ItemGroup>
 
 </Project>
