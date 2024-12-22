@@ -28,9 +28,9 @@ namespace AuthJWTExample.API.Controllers
             var token = await _authService.GenerateToken(request);
 
             if (token == String.Empty)
-                return CustomResponse((int)HttpStatusCode.Unauthorized, false, ControllerMessages.INVALID_CREDENTIALS);
+                return CustomResponse((int)HttpStatusCode.Unauthorized, false, ControllerMessages.AUTH_ERROR_001_INVALID_CREDENTIALS, default);
 
-            return CustomResponse((int)HttpStatusCode.OK, true, token);
+            return CustomResponse((int)HttpStatusCode.OK, true,ControllerMessages.AUTH_OK_001_LOGIN_SUCCESSFUL, token);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using AuthJWTExample.Application.DTOs.Request;
+﻿using AuthJWTExample.API.Constants;
+using AuthJWTExample.Application.DTOs.Request;
 using AuthJWTExample.Application.Interfaces;
 using AuthJWTExample.Domain.Model;
 using Microsoft.AspNetCore.Authorization;
@@ -28,9 +29,9 @@ namespace AuthJWTExample.API.Controllers
             var result = await _userService.Add(user);
 
             if(!result.created)
-                return CustomResponse((int)HttpStatusCode.BadRequest, result.created, result.Errors);
+                return CustomResponse((int)HttpStatusCode.BadRequest, result.created, ControllerMessages.USER_ERROR_001_CREATION_FAILED, result.Errors);
 
-            return CustomResponse((int)HttpStatusCode.Created, result.created, result.Errors);
+            return CustomResponse((int)HttpStatusCode.Created, result.created, ControllerMessages.USER_OK_001_CREATION_SUCCESS ,result.Errors);
         }
     }
 }
