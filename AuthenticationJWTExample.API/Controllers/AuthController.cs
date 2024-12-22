@@ -1,8 +1,11 @@
-﻿using AuthJWTExample.Application.DTOs.Request;
+﻿using AuthJWTExample.API.Constants;
+using AuthJWTExample.Application.DTOs.Request;
 using AuthJWTExample.Application.Interfaces;
+using AuthJWTExample.Application.Validators;
 using AuthJWTExample.Domain.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace AuthJWTExample.API.Controllers
 {
@@ -20,14 +23,14 @@ namespace AuthJWTExample.API.Controllers
         [HttpPost(template: "login", Name = "login")]
         [ProducesResponseType(statusCode: StatusCodes.Status200OK)]
         [ProducesResponseType(statusCode: StatusCodes.Status500InternalServerError)]
-        public async Task<ActionResult> AddUser(LoginRequest request)
+        public async Task<ActionResult> Login(LoginRequest request)
         {
             var token = await _authService.GenerateToken(request);
 
-            if (token == String.Empty) 
-                return Unauthorized();
+            if (token == String.Empty)
+                return CustomResponse((int)HttpStatusCode.Unauthorized, false, ControllerMessages.INVALID_CREDENTIALS);
 
-            return Ok(token);
+            return CustomResponse((int)HttpStatusCode.OK, true, token);
         }
     }
 }

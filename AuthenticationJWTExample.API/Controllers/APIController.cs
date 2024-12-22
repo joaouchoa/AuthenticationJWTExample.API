@@ -14,7 +14,8 @@ namespace AuthJWTExample.API.Controllers
                 (200, true) => Ok(new BaseResponse { StatusCode = status, Sucess = sucess, Data = data }),
                 (201, true) => Ok(new BaseResponse { StatusCode = status, Sucess = sucess, Data = data }),
                 (204, true) => Ok(new BaseResponse { StatusCode = status, Sucess = sucess, Data = data }),
-                (400, false) => BadRequest(new BaseResponse { StatusCode = status, Sucess = sucess, Data = data }), 
+                (400, false) => BadRequest(new BaseResponse { StatusCode = status, Sucess = sucess, Data = data }),
+                (401, false) => Unauthorized(new BaseResponse { StatusCode = status, Sucess = sucess, Data = data }),
                 (404, false) => NotFound(new BaseResponse { StatusCode = status, Sucess = sucess, Data = data })
             };
         }

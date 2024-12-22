@@ -5,11 +5,6 @@ using AuthJWTExample.Application.Validators;
 using AuthJWTExample.Application.Validators.Users;
 using AuthJWTExample.Domain.Interfaces;
 using AuthJWTExample.Domain.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AuthJWTExample.Application.Service
 {

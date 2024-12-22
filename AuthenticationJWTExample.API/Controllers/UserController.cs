@@ -30,7 +30,7 @@ namespace AuthJWTExample.API.Controllers
             if(!result.created)
                 return CustomResponse((int)HttpStatusCode.BadRequest, result.created, result.Errors);
 
-            return CustomResponse((int)HttpStatusCode.OK, result.created, result.Errors);
+            return CustomResponse((int)HttpStatusCode.Created, result.created, result.Errors);
         }
     }
 }

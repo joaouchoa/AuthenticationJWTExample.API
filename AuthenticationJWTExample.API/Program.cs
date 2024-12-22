@@ -1,17 +1,10 @@
-using AuthJWTExample.Application.Interfaces;
-using AuthJWTExample.Application.Service;
-using AuthJWTExample.Domain.Interfaces;
+using AuthJWTExample.API.DependencyInjection;
 using AuthJWTExample.Infra.Context;
-using AuthJWTExample.Infra.Repository;
-using AuthJWTExample.Infra.Security;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using FluentValidation;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System.Reflection;
 using System.Text;
-using AuthJWTExample.Application.Validators.Users;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -75,15 +68,7 @@ builder.Services.AddAuthentication(x =>
         };
     });
 
-//builder.Services.AddScoped<IApplicationBuilder, ApplicationBuilder>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IPasswordHasher, PasswordHasherService>();
-builder.Services.AddValidatorsFromAssembly(typeof(AddUserValidator).Assembly, ServiceLifetime.Scoped);
-builder.Services.AddDbContext<AuthJWTExampleContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
-
+builder.Services.AddApiConfig(builder.Configuration);
 
 var app = builder.Build();
 
