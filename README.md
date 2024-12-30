@@ -9,6 +9,7 @@ Este projeto foi desenvolvido como parte de meus estudos sobre autenticação e 
 - **Identity Core**: Utilizado para hashing seguro de senhas.
 - **.NET 8**: Plataforma principal para desenvolvimento da aplicação.
 - **JWT (JSON Web Token)**: Implementado para autenticação e autorização segura.
+- **Swagger**: Utilizado para documentar e testar os endpoints da API diretamente no navegador.
 - **Entity Framework**: Utilizado para mapeamento objeto-relacional (ORM) e acesso ao banco de dados.
 - **SQLite**: Banco de dados leve e de fácil configuração para estudos e aplicações pequenas.
 
@@ -77,8 +78,6 @@ Este projeto proporcionou experiências valiosas, incluindo:
 
 ## Melhorias Futuras
 - Implementar testes automatizados para garantir a qualidade do código.
-- Adicionar suporte a refresh tokens.
-- Criar documentação com Swagger para facilitar o consumo da API.
 
 ## Contribuições
 Este projeto foi desenvolvido com o objetivo de aprendizado e melhoria de habilidades em .NET. Sugestões e melhorias são sempre bem-vindas!
