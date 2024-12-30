@@ -6,12 +6,14 @@ Este projeto foi desenvolvido como parte de meus estudos sobre autenticação e 
 ## Tecnologias e Padrões Utilizados
 
 ### Tecnologias
+- **Identity Core**: Utilizado para hashing seguro de senhas.
 - **.NET 8**: Plataforma principal para desenvolvimento da aplicação.
 - **JWT (JSON Web Token)**: Implementado para autenticação e autorização segura.
 - **Entity Framework**: Utilizado para mapeamento objeto-relacional (ORM) e acesso ao banco de dados.
 - **SQLite**: Banco de dados leve e de fácil configuração para estudos e aplicações pequenas.
 
 ### Padrões e Práticas
+- **Padrão Repository**: Abstração para acesso e manipulação de dados.
 - **Arquitetura Limpa**: Estrutura do projeto organizada em camadas, garantindo separação de responsabilidades.
 - **Service Pattern**: Lógica de negócio encapsulada em serviços para melhor organização e reuso.
 - **Fluent Validation**: Validação de dados de entrada de forma fluente e reutilizável.
@@ -66,6 +68,16 @@ As respostas da API seguem o seguinte formato:
 - **success**: Indica se a operação foi bem-sucedida.
 - **message**: Mensagem descritiva sobre o resultado da operação.
 - **data**: Contém os dados retornados (se aplicável).
+
+A implementação de resposta utiliza o seguinte código:
+```csharp
+return CustomResponse(
+    (int)HttpStatusCode.OK,
+    true,
+    ControllerMessages.AUTH_OK_001_LOGIN_SUCCESSFUL,
+    token
+);
+```
 
 ## Lições Aprendidas
 Este projeto proporcionou experiências valiosas, incluindo:
