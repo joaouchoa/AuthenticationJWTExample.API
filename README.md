@@ -69,16 +69,6 @@ As respostas da API seguem o seguinte formato:
 - **message**: Mensagem descritiva sobre o resultado da operação.
 - **data**: Contém os dados retornados (se aplicável).
 
-A implementação de resposta utiliza o seguinte código:
-```csharp
-return CustomResponse(
-    (int)HttpStatusCode.OK,
-    true,
-    ControllerMessages.AUTH_OK_001_LOGIN_SUCCESSFUL,
-    token
-);
-```
-
 ## Lições Aprendidas
 Este projeto proporcionou experiências valiosas, incluindo:
 - Implementação segura de autenticação com hashing e JWT.
