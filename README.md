@@ -1,4 +1,4 @@
-# Projeto de Estudos: Autenticação JWT com Token
+# Projeto de Estudos: Autenticação JWT
 
 ## Descrição do Projeto
 Este projeto foi desenvolvido como parte de meus estudos sobre autenticação e segurança em aplicações .NET. O foco principal foi implementar autenticação baseada em JWT (JSON Web Token) e garantir boas práticas de segurança, como o uso de hashing para senhas de usuários. O projeto também aborda padrões de desenvolvimento, arquitetura limpa e melhores práticas para um código escalável e manutençível.
